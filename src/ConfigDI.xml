@@ -9,27 +9,13 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
     
     <bean id="myService" class="SMTPGmailService" />
-    
+    <!--
     <bean id="myOrder" class="OrderService">
     	<constructor-arg ref="myService" />
     </bean>
-    	<!--  
-    <bean id="myCar" class="CarZuhuli">
-    	 <property name="engine" ref="myEngine"/>
-    	 <property name="email" value="vaz@mail.ru"/>
-    </bean> -->
-    	
-    	
-    	
-    	  <!--
-    <bean id="myCar" 
-    	class="CarTesla" 
-    	
-    	init-method="InitObject"
-    	destroy-method="DestroyObject">
-    	
-    	 <constructor-arg ref="myEngine"/>
-    </bean>
     -->
-    
+    <bean id="myOrder" class="OrderService">
+    	<property name="emailService" ref="myService" />
+    </bean>
+       
 </beans>
