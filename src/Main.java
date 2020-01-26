@@ -1,10 +1,15 @@
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 
 	public static void main(String[] args) {
-		EmailService emailService = new SMTPGmailService();
-		OrderService order = new OrderService(emailService);
+		
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ConfigDI.xml");
+		//EmailService emailService = context.getBean("myService", EmailService.class);//new SMTPGmailService();
+		OrderService order = context.getBean("myOrder", OrderService.class);//new OrderService(emailService);
 		order.makeOrder();
+		
+		context.close();
 	}
 
 }
